@@ -1,23 +1,17 @@
 module MyEnumerable
   def all?
-    each do |element|
-      return false unless yield(element)
-    end
+    each { |n| return false unless yield n }
     true
   end
 
   def any?
-    each do |element|
-      return true if yield(element)
-    end
+    each { |n| return true if yield n }
     false
   end
 
   def filter
     result = []
-    each do |element|
-      result.append(element) if yield(element)
-    end
+    each { |n| result.append(element) if yield n }
     result
   end
 end
